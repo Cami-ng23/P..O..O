@@ -53,7 +53,7 @@ function ingresarUrgencia() {
     const result = document.getElementById("result2")
     const input = document.getElementById("input2");
     //input = parseInt(input); --> transformar a numero  
-    if(input.value !== ""){
+    if (input.value !== "") {
         let nombre = input.value;
         let resultado = agregarUrgencia(nombre);
         result.textContent = resultado;
@@ -61,5 +61,94 @@ function ingresarUrgencia() {
         container.classList.remove("d-none");
     } else {
         alert("El nombre no puede estar vacio ")
-    } 
+    }
 }
+
+/*
+Ejercicio 3: Sistema de Delivery (shift, pop e if)
+Contexto: Un restaurante tiene pedidos listos. El cajero puede despachar el pedido más antiguo, o cancelar el último pedido que entró por un error.
+Crea un arreglo: let entregas = ["Pizza", "Sushi", "Hamburguesa", "Ensalada"];
+Función Principal: Crea gestionarPedidos().
+Captura el texto del input. El usuario debe escribir la palabra "despachar" o "cancelar".
+Usa un if. Si escribió "despachar", usa .shift() para sacar la primera comida de la lista.
+Usa un else if. Si escribió "cancelar", usa .pop() para eliminar la última comida de la lista.
+Muestra en el textContent: "Pedidos pendientes: " seguido del arreglo.
+Limpia el input.
+
+*/
+
+
+
+let entregas = ["Pizza", "Suchi", "Hamburguesa", "Ensalada"];
+function actualizarPedidos(pedido) {
+    if (pedido == "despachar") {
+        entregas.shift();
+    } else if (pedido == "cancelar") {
+        entregas.pop()
+    } else {
+        alert("Ingresar un valor valido")
+    }
+    return `Pedidos pendientes: ${entregas.join(", ")}`
+}
+
+function ejercicio_3() {
+    const container = document.getElementById("container3");
+    const result = document.getElementById("result3");
+    let input = document.getElementById("input3");
+    let resultado = actualizarPedidos(input);
+    result.textContent = resultado;
+    input.value = "";
+    container.classList.remove("d-none")
+}
+
+/*
+Ejercicio 4: Validador de Códigos de Descuento (for e if)
+Contexto: Una tienda online revisa si el código promocional que ingresó el cliente existe en su base de datos para aplicarle una rebaja.
+Crea un arreglo: let codigosValidos = ["VERANO2026", "PROMO50", "CLIENTEVIP"];
+Función Principal: Crea verificarCodigo().
+Captura el código desde el input.
+Crea una variable mensaje = "Código inválido o expirado";.
+Recorre el arreglo con un ciclo for.
+Si el elemento actual del ciclo es igual al texto del input, cambia la variable mensaje a "¡Éxito! Código aceptado".
+Fuera del ciclo, inyecta la variable mensaje en el textContent del párrafo.
+Limpia el input.
+
+*/
+
+function buscarCodigo(codigo) {
+    alert(codigo);
+    let mensaje = "Código inválido o expirado";
+    for (let i = 0; i < codigosValidos.length; i++) {
+        if (codigo = codigosValidos[i]) {
+            mensaje = "!Éxito¡ Código aceptado."
+            return "!Éxito¡ Código aceptado"
+        } else {
+            mensaje = ("Ingresa un código válido")
+        }
+    }
+}
+
+function verificarCodigo() {
+    let input = document.getElementById("input4");
+    let codigo = input.value;
+    const result = document.getElementById("result4");
+    const container = document.getElementById("container4");
+    let resultado = buscarCodigo(codigo);
+    result.textContent = resultado;
+    input.value = "";
+    container.classList.remove("d-none");
+}
+
+/*
+Ejercicio 5: Simulador de Cuotas (for)
+Contexto: Un cliente compra un producto y el sistema le genera automáticamente las etiquetas para sus próximas 3 letras de pago.
+Función Principal: Crea simularCuotas().
+Captura el nombre del producto desde el input (ej: "Bicicleta").
+Crea una variable vacía: registroPagos = "";
+Crea un ciclo for que dé exactamente 3 vueltas (del 1 al 3).
+En cada vuelta, súmale (+=) a registroPagos el producto y el número de la cuota (Ej: producto + " - Cuota " + i + " | ").
+Fuera del ciclo, muestra la variable registroPagos en el textContent del párrafo.
+Limpia el input.
+
+*/ 
+

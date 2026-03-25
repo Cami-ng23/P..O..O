@@ -154,8 +154,8 @@ Limpia el input.
 
 function calcularCuotas(valor, cuota) {
     let registroPagos = "";
-    for(let i = 1; i <= 3; i++){
-        registroPagos += `Cuota ${i} de ${cuota} : ${parseInt(valor/3)}`
+    for (let i = 1; i <= 3; i++) {
+        registroPagos += `Cuota ${i} de ${cuota} : ${parseInt(valor / 3)}`
     }
     return registroPagos;
 }
@@ -167,7 +167,7 @@ function simularCuotas() {
     let cuota = parseInt(cuotaInput.value);
     const result = document.getElementById("result5");
     const container = document.getElementById("container5");
-    let resultado = calcularCuotas(valorProducto,cuota)
+    let resultado = calcularCuotas(valorProducto, cuota)
     result.textContent = resultado;
     producto.value = "";
     cuotaInput.value = "";
@@ -188,6 +188,39 @@ Muestra el resultado en el textContent del párrafo.
 Limpia el input.
 
 */
+
+let vitrina = [2500, 15000, 8000, 30000, 5000];
+let opciones = [];
+function comprobarPresupuesto(presupuesto) {
+    for (let i = 0; i <= vitrina.length; i++) {
+        if(presupuesto >= vitrina[i]){
+            opciones.push(vitrina[i])
+        };
+    }
+    if (opciones == ""){
+        return "No te alcanza para nada.";
+    } else {
+        return `Te alcanza para los precios : ${opciones.join(" - ")}`
+    }
+}
+
+function filtrarPrecios(){
+    let input = document.getElementById("input6");
+    const result = document.getElementById("result6");
+    const container = document.getElementById("container6");
+    let dinero = parseInt(input.value);
+    if (isNaN(dinero)){
+        alert("Ingresar valores válidos.");
+    } else {
+        let resultado = comprobarPresupuesto(dinero);
+        result.textContent = resultado;
+        input.value = "";
+        container.classList.remove("d-none")
+        opciones = [];
+    }
+};
+
+
 
 /*
 Ejercicio 7: Cálculo de Sueldo Líquido (Una función llama a otra)

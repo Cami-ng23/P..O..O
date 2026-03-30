@@ -202,7 +202,7 @@ function comprobarPresupuesto(presupuesto) {
     } else {
         return `Te alcanza para los precios : ${opciones.join(" - ")}`
     }
-}
+};
 
 function filtrarPrecios(){
     let input = document.getElementById("input6");
